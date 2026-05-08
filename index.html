@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENKO — Global Music Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--b:#0015CE;--b2:#001AFF;--m:#C3F0C8;--m2:#A8E5B0;--bg:#FAFAF8;--bg2:#F0F0EC;--bg3:#E8E8E3;--txt:#0A0A0A;--txt2:#555;--txt3:#999;--bord:#E0E0DB;--blk:#000}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Raleway',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bord);border-radius:3px}
+.osw{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;line-height:1.1}
+.ral{font-family:'Raleway',sans-serif;line-height:1.6}
+.mono{font-family:'JetBrains Mono',monospace}
+button{cursor:pointer;font-family:inherit}
+
+/* HEADER */
+.header{position:sticky;top:0;z-index:100;background:rgba(250,250,248,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--bord)}
+.header-inner{display:flex;justify-content:space-between;align-items:center;padding:16px 48px;max-width:1400px;margin:0 auto}
+.logo{cursor:pointer;font-size:28px;letter-spacing:.15em;border:none;background:none;color:var(--txt)}
+nav{display:flex;gap:4px;align-items:center}
+.nav-btn{padding:8px 16px;border:none;border-bottom:2px solid transparent;background:transparent;color:var(--txt3);font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .25s;font-weight:400}
+.nav-btn:hover{color:var(--txt)}.nav-btn.act{color:var(--b);border-bottom-color:var(--b);font-weight:600}
+.lang-wrap{display:flex}
+.lang-btn{padding:6px 12px;border:1px solid var(--bord);font-family:'Raleway',sans-serif;font-size:10px;letter-spacing:.15em;cursor:pointer;background:transparent;color:var(--txt3);font-weight:400;transition:all .2s}
+.lang-btn.act{background:var(--b);color:#fff;border-color:var(--b);font-weight:600}
+.lang-btn:first-child{border-radius:4px 0 0 4px}.lang-btn:last-child{border-radius:0 4px 4px 0}
+
+/* SHARED */
+.wrap{max-width:1400px;margin:0 auto}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:32px;border-bottom:1px solid var(--bord);padding-bottom:12px}
+.sec-title{font-size:13px;color:var(--txt3);letter-spacing:.2em}
+.page-label{font-size:11px;color:var(--b);letter-spacing:.15em;text-transform:uppercase;font-weight:500;margin-bottom:8px}
+.btn-blue{padding:14px 36px;background:var(--b);color:#fff;border:none;font-family:'Oswald',sans-serif;font-weight:700;font-size:11px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:0;transition:all .2s}
+.btn-blue:hover{background:var(--b2)}
+.btn-outline-w{padding:14px 36px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);font-family:'Oswald',sans-serif;font-weight:700;font-size:11px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:0;transition:all .2s}
+.btn-outline-w:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.btn-white{padding:14px 36px;background:#fff;color:var(--txt);border:none;font-family:'Oswald',sans-serif;font-weight:700;font-size:11px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:0;transition:all .2s}
+.btn-white:hover{background:var(--m)}
+
+/* HERO */
+.hero{position:relative;min-height:600px;overflow:hidden;background:var(--blk)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 30%,rgba(0,21,206,.35) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(195,240,200,.08) 0%,transparent 55%),linear-gradient(180deg,#000 0%,#050510 100%)}
+.hero-pat{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.025'%3E%3Cpath d='M0 0h40v40H0z'/%3E%3C/g%3E%3C/svg%3E")}
+.hero-grain{position:absolute;inset:0;opacity:.04;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.stat-grid{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(255,255,255,.08)}
+.stat-item{padding:28px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.3);backdrop-filter:blur(10px)}
+.stat-item:last-child{border-right:none}
+
+/* CAROUSEL */
+.carousel-wrap{position:relative;overflow:hidden}
+.carousel-track{display:flex;transition:transform .5s ease}
+.carousel-slide{min-width:100%;position:relative}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:#fff;border:none;width:52px;height:52px;border-radius:0;font-size:18px;cursor:pointer;z-index:5;display:flex;align-items:center;justify-content:center;transition:all .2s;color:var(--txt)}
+.carousel-btn:hover{background:var(--m);transform:translateY(-50%) scale(1.05)}
+.carousel-btn.prev{left:0}
+.carousel-btn.next{right:0}
+.carousel-dots{display:flex;gap:6px;justify-content:center;margin-top:24px}
+.carousel-dot{width:24px;height:2px;background:var(--bord);border:none;cursor:pointer;transition:all .2s;border-radius:0}
+.carousel-dot.act{background:var(--b);width:48px}
+
+/* SPLIT BLOCK */
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:500px}
+.split-img{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.split-content{padding:60px 48px;display:flex;flex-direction:column;justify-content:center}
+
+/* ARTIST HERO CAROUSEL */
+.artist-slide{min-width:100%;height:520px;position:relative;display:flex}
+.artist-slide-img{width:50%;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.artist-slide-info{width:50%;padding:60px 48px;display:flex;flex-direction:column;justify-content:center;background:var(--txt)}
+
+/* NEWS CARD */
+.news-card{border:1px solid var(--bord);overflow:hidden;cursor:pointer;transition:all .3s}
+.news-card:hover{border-color:var(--b);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.news-img{height:200px;background:var(--bg2);display:flex;align-items:center;justify-content:center}
+
+/* TRACK CAROUSEL */
+.track-item{min-width:180px;margin-right:16px;cursor:pointer;transition:all .3s;flex-shrink:0}
+.track-item:hover{transform:translateY(-4px)}
+.track-cover{width:180px;height:180px;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+
+/* MERCH */
+.merch-strip{background:var(--txt);padding:16px 0;overflow:hidden;cursor:pointer}
+.merch-inner{display:flex;gap:48px;animation:marquee 20s linear infinite;white-space:nowrap}
+
+/* PARTNER LOGO */
+.partner-logo{padding:20px 32px;background:var(--bg2);display:flex;align-items:center;justify-content:center;border-radius:4px;opacity:.5;transition:all .3s}
+.partner-logo:hover{opacity:1}
+
+/* CASE CARD */
+.case-card{padding:40px 36px;background:#fff;border:1px solid var(--bord);transition:all .3s;cursor:pointer;position:relative;overflow:hidden}
+.case-card:hover{border-color:var(--b);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,21,206,.08)}
+.case-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--b);transform:scaleX(0);transition:transform .3s}.case-card:hover::after{transform:scaleX(1)}
+
+/* PROD CARD */
+.prod-slide{min-width:100%;display:grid;grid-template-columns:1fr 1fr;min-height:400px}
+.prod-img{background:var(--bg2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.prod-info{padding:48px;display:flex;flex-direction:column;justify-content:center;background:#fff}
+
+/* FAQ */
+.faq-row{padding:20px 0;border-bottom:1px solid var(--bord);cursor:pointer;transition:all .3s}
+.faq-row:hover{padding-left:8px}
+.faq-expand{max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .3s;opacity:0}
+.faq-row.open .faq-expand{max-height:200px;opacity:1}
+.faq-row.open .faq-plus{transform:rotate(45deg);color:var(--b)}
+.faq-plus{transition:all .3s;font-size:18px;color:var(--txt3)}
+
+/* TESTIMONIAL */
+.testimonial{text-align:center;padding:60px 48px;background:var(--bg)}
+
+/* FORM */
+.pill{padding:6px 14px;border-radius:0;border:1px solid var(--bord);color:var(--txt2);font-size:11px;cursor:pointer;transition:all .2s;background:transparent;font-family:'Raleway',sans-serif;display:inline-block}
+.pill:hover{border-color:var(--b);color:var(--b)}
+input,textarea{width:100%;padding:12px 16px;border-radius:0;border:1px solid var(--bord);background:#fff;color:var(--txt);font-size:14px;outline:none;transition:border .2s;font-family:'Raleway',sans-serif}
+input:focus,textarea:focus{border-color:var(--b)}
+input::placeholder,textarea::placeholder{color:var(--txt3)}
+textarea{resize:vertical}
+
+/* GROWTH CHART */
+.growth-wrap{margin-top:8px;padding:20px 0;border-top:1px solid rgba(255,255,255,.08)}
+.growth-meta{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.growth-svg{width:100%;height:auto;display:block}
+
+/* TEAM CARD */
+.team-card{background:var(--bg2);padding:32px 24px;text-align:left;border:1px solid var(--bord);transition:all .25s}
+.team-card:hover{background:#fff;border-color:var(--b);transform:translateY(-2px)}
+.team-portrait{width:100%;aspect-ratio:1;background:var(--bg3);margin-bottom:16px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.team-portrait::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 60%,rgba(0,21,206,.15) 100%)}
+
+/* IG-STYLE TILE */
+.ig-tile{aspect-ratio:1;position:relative;overflow:hidden;cursor:pointer;transition:all .3s}
+.ig-tile:hover{transform:scale(.985)}
+.ig-tile-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.7) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:16px;color:#fff}
+
+/* PARTNER STRIP */
+.partner-strip{background:var(--bg);padding:32px 0;border-top:1px solid var(--bord);border-bottom:1px solid var(--bord);overflow:hidden}
+.partner-marquee{display:flex;gap:64px;animation:marquee 35s linear infinite;white-space:nowrap;align-items:center}
+
+/* FOOTER */
+.footer{background:var(--txt);color:#fff;padding:48px 48px 24px}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.flink{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:8px;cursor:pointer;transition:color .2s}
+.flink:hover{color:#fff}
+.fbot{border-top:1px solid rgba(255,255,255,.1);padding-top:16px;display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.2);letter-spacing:.05em}
+
+/* NAV BUTTONS for What We Do */
+.wwd-btn{padding:12px 24px;background:transparent;border:1px solid var(--bord);font-family:'Raleway',sans-serif;font-size:12px;color:var(--txt2);cursor:pointer;transition:all .2s;border-radius:2px;text-align:left}
+.wwd-btn:hover{border-color:var(--b);color:var(--b)}
+.wwd-btn span{display:block;font-size:9px;color:var(--txt3);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+
+@media(max-width:900px){
+  .header-inner{padding:12px 20px}
+  nav{display:none}
+  .split{grid-template-columns:1fr}
+  .artist-slide{flex-direction:column;height:auto}
+  .artist-slide-img,.artist-slide-info{width:100%}
+  .stat-grid{grid-template-columns:repeat(3,1fr)}
+  .fgrid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <button class="logo osw" onclick="go('enko')">ENKO</button>
+    <nav id="nav-container"></nav>
+    <div class="lang-wrap">
+      <button class="lang-btn act" id="lb-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="lb-ua" onclick="setLang('ua')">UA</button>
+    </div>
+  </div>
+</header>
+
+<main id="app"></main>
+<footer class="footer" id="footer-el"></footer>
+
+<script>
+// EDIT THIS — paste LIRA's real website here. Marketing nav opens it externally.
+const LIRA_URL="https://www.instagram.com/lira.creative";
+
+const PAGES=["enko","publishing","forbusiness","contact"];
+const NAV={en:{enko:"ENKO",publishing:"Publishing",forbusiness:"For Business",contact:"Get in Touch"},ua:{enko:"ENKO",publishing:"Паблішинг",forbusiness:"Для бізнесу",contact:"Контакти"}};
+const MARKETING_LABEL={en:"Marketing ↗",ua:"Маркетинг ↗"};
+
+const STATS_EN=[{n:"16B+",l:"Global Streams"},{n:"134",l:"Artists Globally"},{n:"30",l:"Platinum Hits"},{n:"40",l:"Gold Hits"},{n:"3",l:"Record Studios"}];
+const STATS_UA=[{n:"16B+",l:"Стрімів глобально"},{n:"134",l:"Артисти"},{n:"30",l:"Платинових хітів"},{n:"40",l:"Золотих хітів"},{n:"3",l:"Студії"}];
+
+// Growth values are indexed (relative monthly listeners over 6 periods)
+const ARTISTS_CAROUSEL=[
+  {name:"CARPETMAN",aka:"Black Soil",img:"🎹",color:"#0A0A14",achievement:{en:"Emmy Awards Winner",ua:"Переможець Emmy Awards"},streams:"120M+",growth:[8,18,42,71,98,120]},
+  {name:"alyona alyona",aka:"",img:"🎤",color:"#1A0E2A",achievement:{en:"Eurovision 2024 · Equal Ambassador",ua:"Євробачення 2024 · Spotify Equal"},streams:"3.2B+",growth:[280,640,1180,1850,2520,3200]},
+  {name:"KOLA",aka:"",img:"🌟",color:"#0F1E2A",achievement:{en:"Spotify Equal Ambassador",ua:"Амбасадор Spotify Equal"},streams:"800M+",growth:[60,170,310,490,660,800]},
+  {name:"KALUSH ORCHESTRA",aka:"",img:"🎻",color:"#1F1E0E",achievement:{en:"Eurovision 2022 Winners",ua:"Переможці Євробачення 2022"},streams:"2.4B+",growth:[420,820,1320,1720,2080,2400]},
+  {name:"BLACK SOIL",aka:"",img:"🌾",color:"#1A1408",achievement:{en:"Genre-defining Project",ua:"Жанро-визначальний проєкт"},streams:"60M+",growth:[3,9,18,32,46,60]},
+  {name:"LEMKA",aka:"",img:"🎶",color:"#0E1F14",achievement:{en:"Rising Talent",ua:"Новий голос"},streams:"15M+",growth:[1,3,6,9,12,15]},
+  {name:"Maryna Krut",aka:"Марина Круть",img:"🎵",color:"#2A0E1E",achievement:{en:"International Touring Artist",ua:"Міжнародні тури"},streams:"500M+",growth:[50,110,200,300,410,500]}
+];
+
+const PARTNERS=["Universal Music Group","Sony Music","Sony Publishing","EPG","Cobalt"];
+
+const TEAM=[
+  {name:"Andriy",role:{en:"CEO / Co-Founder",ua:"CEO / Співзасновник"},tag:"HEAD"},
+  {name:"Kateryna",role:{en:"COO / Strategy",ua:"COO / Стратегія"},tag:"HEAD"},
+  {name:"Vanko",role:{en:"Head of Publishing",ua:"Керівник паблішингу"},tag:"HEAD"},
+  {name:"LIRA",role:{en:"Marketing Partner",ua:"Маркетинг-партнер"},tag:"PARTNER"}
+];
+
+const NEWS_EN=[
+  {source:"Billboard",title:"Ukrainian Music Label ENKO Reaches 16 Billion Global Streams",date:"2024",tag:"Industry"},
+  {source:"Forbes",title:"How ENKO Is Building a Global Music Empire From Kyiv",date:"2024",tag:"Feature"},
+  {source:"NYT",title:"The Rise of Ukrainian Music on the World Stage",date:"2023",tag:"Culture"}
+];
+const NEWS_UA=[
+  {source:"Billboard",title:"Український лейбл ENKO досяг 16 мільярдів глобальних стрімів",date:"2024",tag:"Індустрія"},
+  {source:"Forbes",title:"Як ENKO будує глобальну музичну імперію з Києва",date:"2024",tag:"Стаття"},
+  {source:"NYT",title:"Зліт української музики на світовій сцені",date:"2023",tag:"Культура"}
+];
+
+const PRODUCER_HEAD={
+  name:"VANKO",
+  role:{en:"Head of Publishing · Lead Producer",ua:"Керівник паблішингу · Головний продюсер"},
+  location:{en:"Based in Europe",ua:"Базується в Європі"},
+  streams:"2.1B+",
+  genre:"Hip-Hop / Pop / Ethno",
+  bio:{en:"Vanko leads ENKO's publishing arm — directing the production team and crafting platinum hits across multiple genres. The creative conductor behind our sound.",ua:"Ваня — керівник та головний диригент команди паблішингу ENKO. Платинові хіти в різних жанрах."},
+  img:"🎧"
+};
+
+const TRACKS=[
+  {title:"Track A",artist:"alyona alyona",streams:"142M+",color:"#e8432a"},
+  {title:"Track B",artist:"CARPETMAN",streams:"89M+",color:"#1a1a2e"},
+  {title:"Track C",artist:"KOLA",streams:"76M+",color:"#2d6a4f"},
+  {title:"Track D",artist:"KALUSH",streams:"210M+",color:"#3d1b2d"},
+  {title:"Track E",artist:"SKOFKA",streams:"65M+",color:"#1b2d3d"},
+  {title:"Track F",artist:"Jerry Heil",streams:"120M+",color:"#5a189a"},
+  {title:"Track G",artist:"YAKTAK",streams:"55M+",color:"#e07900"}
+];
+
+const FAQ_EN=[
+  {q:"How do I get in touch about distribution?",a:"Send your best tracks with streaming links to demos@enkomusic.com. We review every submission within 14 business days."},
+  {q:"What markets do you cover?",a:"We operate globally with focus on North America, Europe, and Asia-Pacific. Distribution reaches 150+ platforms worldwide."},
+  {q:"Do you offer advances?",a:"Yes. We provide advances based on performance metrics and growth potential. Each deal is structured individually."},
+  {q:"Can you help with sync/licensing?",a:"Our publishing arm handles sync placements for film, TV, advertising, and gaming globally."},
+  {q:"How does the sub-label partnership work?",a:"You maintain your brand and A&R. We provide infrastructure — distribution, marketing, legal, reporting. Full stack."},
+  {q:"What about catalog acquisition?",a:"We acquire and manage catalogs with proven growth strategies. Transparent reporting, platform optimization, sync placement."}
+];
+const FAQ_UA=[
+  {q:"Як зв'язатися щодо дистрибуції?",a:"Надішліть треки з посиланнями на стрімінг на demos@enkomusic.com. Розглядаємо протягом 14 робочих днів."},
+  {q:"Які ринки ви покриваєте?",a:"Працюємо глобально: Північна Америка, Європа, Азійсько-Тихоокеанський регіон. 150+ платформ."},
+  {q:"Чи є аванси?",a:"Так. Надаємо аванси на основі метрик та потенціалу зростання."},
+  {q:"Синхронізація?",a:"Наш паблішинг займається синхронізацією для кіно, ТВ, реклами та ігор глобально."},
+  {q:"Як працює саблейбл-партнерство?",a:"Ви зберігаєте бренд і A&R. Ми даємо інфраструктуру — дистрибуцію, маркетинг, юридичну підтримку."},
+  {q:"Що з каталогами?",a:"Купуємо та управляємо каталогами. Прозора звітність, оптимізація, синхронізація."}
+];
+
+const DEPTS=[
+  {l:{en:"A&R / New Artists",ua:"A&R / Нові артисти"},e:"demos@enkomusic.com",d:{en:"Send your music — streaming links preferred",ua:"Надішліть музику з посиланнями на стрімінг"}},
+  {l:{en:"Sync & Licensing",ua:"Синхронізація"},e:"sync@enkomusic.com",d:{en:"Film, TV, advertising, gaming",ua:"Кіно, ТВ, реклама, ігри"}},
+  {l:{en:"Commercial / Brands",ua:"Комерція / Бренди"},e:"commercial@enkomusic.com",d:{en:"Brand partnerships, sponsorships",ua:"Бренд-партнерства, спонсорства"}},
+  {l:{en:"Business & Investment",ua:"Бізнес та інвестиції"},e:"business@enkomusic.com",d:{en:"Sub-labels, catalogs, investment",ua:"Саблейбли, каталоги, інвестиції"}},
+  {l:{en:"General",ua:"Загальні"},e:"info@enkomusic.com",d:{en:"Everything else",ua:"Усе інше"}}
+];
+
+const MERCH=["CARPETMAN Capsule","Black Soil Vinyl","Limited Prints","ENKO Essentials","Studio Merch","Collab Drops"];
+
+let lang="en",page="enko",carouselIdx=0,expandedFaq=null,formSent=false;
+const t=()=>lang==="ua",L=obj=>obj[lang];
+
+function go(p){page=p;carouselIdx=0;expandedFaq=null;formSent=false;render();window.scrollTo({top:0,behavior:'smooth'})}
+function setLang(l){lang=l;render()}
+function toggleFaq(i){expandedFaq=expandedFaq===i?null:i;render()}
+function sendForm(){formSent=true;render()}
+function slideCarousel(dir){carouselIdx=Math.max(0,Math.min(carouselIdx+dir,ARTISTS_CAROUSEL.length-1));render()}
+function setCarousel(i){carouselIdx=i;render()}
+
+function growthChart(data,color){
+  color=color||"#C3F0C8";
+  const W=420,H=160,PAD=4;
+  const max=Math.max(...data);
+  const pts=data.map((v,i)=>{
+    const x=(i/(data.length-1))*(W-PAD*2)+PAD;
+    const y=H-((v/max)*(H-30))-PAD;
+    return [x,y];
+  });
+  const polyline=pts.map(p=>p.join(',')).join(' ');
+  const area=`M${PAD},${H} L${pts.map(p=>p.join(',')).join(' L')} L${W-PAD},${H} Z`;
+  const dots=pts.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="${i===pts.length-1?4:2.5}" fill="${color}"/>`).join('');
+  return `<svg class="growth-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+    <defs><linearGradient id="gg-${color.replace('#','')}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${color}" stop-opacity=".35"/><stop offset="100%" stop-color="${color}" stop-opacity="0"/></linearGradient></defs>
+    <path d="${area}" fill="url(#gg-${color.replace('#','')})"/>
+    <polyline points="${polyline}" fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    ${dots}
+  </svg>`;
+}
+
+function renderNav(){
+  // Insert Marketing as external LIRA link between Publishing and For Business
+  const items=PAGES.map(p=>`<button class="nav-btn ${page===p?'act':''}" onclick="go('${p}')">${NAV[lang][p]}</button>`);
+  const liraBtn=`<a class="nav-btn" href="${LIRA_URL}" target="_blank" rel="noopener" title="LIRA — ${t()?'наш партнер з маркетингу':'our marketing partner'}" style="text-decoration:none;display:inline-block">${MARKETING_LABEL[lang]}</a>`;
+  items.splice(2,0,liraBtn);
+  document.getElementById('nav-container').innerHTML=items.join('');
+  document.getElementById('lb-en').className=`lang-btn ${lang==='en'?'act':''}`;
+  document.getElementById('lb-ua').className=`lang-btn ${lang==='ua'?'act':''}`;
+}
+function renderFooter(){
+  const footerNav=PAGES.map(p=>`<div class="flink" onclick="go('${p}')">${NAV[lang][p]}</div>`);
+  footerNav.splice(2,0,`<a class="flink" href="${LIRA_URL}" target="_blank" rel="noopener" style="text-decoration:none;display:block">${MARKETING_LABEL[lang]}</a>`);
+  document.getElementById('footer-el').innerHTML=`<div class="wrap" style="max-width:1400px;margin:0 auto"><div class="fgrid"><div><span class="osw" style="font-size:24px;letter-spacing:.15em;display:block;margin-bottom:12px">ENKO</span><p class="ral" style="font-size:12px;color:rgba(255,255,255,.4);line-height:1.7;max-width:280px">${t()?"Глобальна музична компанія. Дистрибуція, паблішинг, інвестиції.":"Global music company. Distribution, publishing, investment, management."}</p></div><div><h4 class="ral" style="font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px">${t()?"Навігація":"Navigate"}</h4>${footerNav.join('')}</div><div><h4 class="ral" style="font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px">${t()?"Контакти":"Contact"}</h4>${["demos@","sync@","business@","info@"].map(e=>`<div class="mono" style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:8px">${e}enkomusic.com</div>`).join('')}</div><div><h4 class="ral" style="font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px">${t()?"Соцмережі":"Follow"}</h4>${["Instagram","YouTube","TikTok","Spotify","LinkedIn"].map(s=>`<div class="flink">${s}</div>`).join('')}</div></div><div class="fbot"><span>© 2025 ENKO Music</span><span>Switzerland · New York · Kyiv</span></div></div>`;
+}
+
+// ════════════════════════════════════
+// PAGE: ENKO (HOME)
+// ════════════════════════════════════
+function pageEnko(){
+  const stats=t()?STATS_UA:STATS_EN;
+  const a=ARTISTS_CAROUSEL[carouselIdx];
+  const news=t()?NEWS_UA:NEWS_EN;
+
+  return `
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"><div class="hero-pat"></div></div>
+    <div class="hero-grain"></div>
+    <div style="position:absolute;top:24px;right:48px;z-index:2;display:flex;gap:8px;align-items:center">
+      <div style="width:8px;height:8px;border-radius:50%;background:#ff3b3b;animation:pulse 2s infinite"></div>
+      <span class="ral" style="font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.15em;text-transform:uppercase">${t()?"Відео-луп · артисти":"Video loop · artists"}</span>
+    </div>
+    <div style="position:relative;z-index:2;padding:100px 48px 0;max-width:800px">
+      <p class="ral" style="font-size:11px;color:var(--m);letter-spacing:.25em;text-transform:uppercase;margin-bottom:20px;font-weight:500">${t()?"Музична компанія":"Music Company"}</p>
+      <h1 class="osw" style="font-size:64px;color:#fff;margin-bottom:28px;letter-spacing:.04em">${t()?'Українська музика.<br><span style="color:var(--m)">Глобальний масштаб.</span>':'Global Music.<br><span style="color:var(--m)">Global Reach.</span>'}</h1>
+      <p class="ral" style="font-size:17px;color:rgba(255,255,255,.45);max-width:540px;margin-bottom:40px;line-height:1.7">${t()?"Дистрибуція, паблішинг, маркетинг та менеджмент для 134 артистів. 16 мільярдів стрімів. Переможці Євробачення.":"We produce, distribute and promote music worldwide. 134 artists. 16 billion streams. Eurovision winners. Platinum records."}</p>
+      <div style="display:flex;gap:12px">
+        <button class="osw btn-white" onclick="go('contact')">GET IN TOUCH</button>
+        <button class="osw btn-outline-w" onclick="go('forbusiness')">FOR BUSINESS</button>
+      </div>
+    </div>
+    <div style="position:relative;z-index:2;margin-top:60px">
+      <div class="stat-grid">${stats.map(s=>`<div class="stat-item"><div class="osw" style="font-size:28px;color:#fff">${s.n}</div><div class="ral" style="font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.15em;text-transform:uppercase;margin-top:6px">${s.l}</div></div>`).join('')}</div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section style="padding:36px 48px;background:#fff" class="wrap">
+    <div style="display:flex;justify-content:center;align-items:center;gap:48px;flex-wrap:wrap">
+      ${PARTNERS.map(p=>`<span class="osw" style="font-size:12px;color:var(--txt3);letter-spacing:.1em;opacity:.5">${p}</span>`).join('')}
+    </div>
+  </section>
+
+  <!-- WHAT WE DO — Distribution focused split block (Believe ref) -->
+  <section class="split" style="background:var(--txt)">
+    <div class="split-img" style="background:var(--bg2)">
+      <div style="text-align:center">
+        <span style="font-size:120px;opacity:.1">🎶</span>
+        <p class="ral" style="font-size:10px;color:var(--txt3);margin-top:12px;letter-spacing:.1em;text-transform:uppercase">${t()?"Фото артиста / студії":"Artist / Studio Photo"}</p>
+      </div>
+    </div>
+    <div class="split-content" style="background:var(--txt);color:#fff">
+      <p class="ral" style="font-size:10px;color:var(--m);letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px">(WHAT WE DO)</p>
+      <h2 class="osw" style="font-size:36px;color:#fff;margin-bottom:20px">${t()?"ГЛОБАЛЬНА ДИСТРИБУЦІЯ<br>ТА РОЗВИТОК":"GLOBAL DISTRIBUTION<br>& ARTIST GROWTH"}</h2>
+      <p class="ral" style="font-size:15px;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:28px;max-width:440px">${t()?"Ми працюємо з Universal Music Group. Розвиваємо релізи на 150+ платформах. Прозора звітність, стратегія просування, підтримка на кожному етапі. 100% наших артистів довіряють нам свій каталог.":"We work with Universal Music Group. 150+ platform distribution. Transparent reporting, release strategy, dedicated support. 100% of our artists trust us with their catalog."}</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="wwd-btn" onclick="go('publishing')">Publishing <span>${t()?"Студії та хіти":"Studios & Hits"}</span></button>
+        <a class="wwd-btn" href="${LIRA_URL}" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">Marketing ↗ <span>${t()?"LIRA — наш партнер":"LIRA — partner agency"}</span></a>
+        <button class="wwd-btn" onclick="go('forbusiness')" style="border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.6)">Partnership <span style="color:rgba(255,255,255,.3)">${t()?"Саблейбли та інвестиції":"Sub-labels & Investment"}</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTIST CAROUSEL (Believe-style, full-width) -->
+  <section style="background:var(--bg);padding:0">
+    <div style="padding:48px 48px 0" class="wrap">
+      <div class="sec-head">
+        <h2 class="osw sec-title">${t()?"НАШІ АРТИСТИ":"OUR ARTISTS"}</h2>
+        <span class="ral" style="font-size:11px;color:var(--txt3)">${carouselIdx+1} / ${ARTISTS_CAROUSEL.length}</span>
+      </div>
+    </div>
+    <div style="position:relative">
+      <div style="display:flex;min-height:480px;transition:all .5s">
+        <div class="artist-slide" style="width:100%">
+          <div class="artist-slide-img" style="background:${a.color}">
+            <div style="text-align:center">
+              <span style="font-size:140px;opacity:.2">${a.img}</span>
+              <p class="ral" style="font-size:10px;color:rgba(255,255,255,.3);margin-top:8px">${t()?"Фото артиста":"Artist Photo"}</p>
+            </div>
+          </div>
+          <div class="artist-slide-info">
+            <p class="ral" style="font-size:10px;color:var(--m);letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px">${L(a.achievement)}</p>
+            <h3 class="osw" style="font-size:54px;color:#fff;margin-bottom:8px;letter-spacing:.02em">${a.name}</h3>
+            ${a.aka?`<p class="ral" style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:18px">${a.aka}</p>`:'<div style="height:18px"></div>'}
+            <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:8px">
+              <p class="osw" style="font-size:32px;color:var(--m);letter-spacing:.04em">${a.streams}</p>
+              <span class="mono" style="font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase">${t()?"стрімів":"streams"}</span>
+            </div>
+            <div class="growth-wrap" style="max-width:420px">
+              <div class="growth-meta"><span>${t()?"ЗРОСТАННЯ":"GROWTH"}</span><span>${t()?"6-МІСЯЧНА ТРАЄКТОРІЯ":"6-MONTH TRAJECTORY"}</span></div>
+              ${growthChart(a.growth)}
+            </div>
+          </div>
+        </div>
+      </div>
+      ${carouselIdx>0?`<button class="carousel-btn prev" onclick="slideCarousel(-1)">←</button>`:''}
+      ${carouselIdx<ARTISTS_CAROUSEL.length-1?`<button class="carousel-btn next" onclick="slideCarousel(1)">→</button>`:''}
+    </div>
+    <div class="carousel-dots" style="padding-bottom:32px">
+      ${ARTISTS_CAROUSEL.map((_,i)=>`<button class="carousel-dot ${i===carouselIdx?'act':''}" onclick="setCarousel(${i})"></button>`).join('')}
+    </div>
+  </section>
+
+  <!-- TEAM (HEADs + PARTNERs only — no full team) -->
+  <section style="padding:64px 48px;background:var(--bg)" class="wrap">
+    <div class="sec-head">
+      <h2 class="osw sec-title">${t()?"КОМАНДА":"TEAM"}</h2>
+      <span class="ral" style="font-size:11px;color:var(--txt3)">${t()?"Хеди та партнери":"Heads & partners"}</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+      ${TEAM.map(p=>`<div class="team-card">
+        <div class="team-portrait"><span style="font-size:48px;opacity:.15">◆</span></div>
+        <span class="mono" style="font-size:9px;color:${p.tag==='PARTNER'?'var(--b)':'var(--txt3)'};letter-spacing:.18em">${p.tag}</span>
+        <h4 class="osw" style="font-size:18px;color:var(--txt);margin:6px 0 4px">${p.name}</h4>
+        <p class="ral" style="font-size:11px;color:var(--txt2);letter-spacing:.05em">${L(p.role)}</p>
+      </div>`).join('')}
+    </div>
+  </section>
+
+  <!-- LATEST NEWS (Warner Records ref — external press, not our blog) -->
+  <section style="padding:64px 48px;background:#fff" class="wrap">
+    <div class="sec-head">
+      <h2 class="osw sec-title">${t()?"В НОВИНАХ":"IN THE NEWS"}</h2>
+      <span class="ral" style="font-size:11px;color:var(--txt3)">${t()?"Преса про нас":"Press about us"}</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      ${news.map(n=>`<div class="news-card">
+        <div class="news-img" style="background:var(--txt)">
+          <span class="osw" style="font-size:24px;color:rgba(255,255,255,.15)">${n.source}</span>
+        </div>
+        <div style="padding:20px 24px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:12px">
+            <span class="ral" style="font-size:9px;color:var(--b);letter-spacing:.12em;text-transform:uppercase;font-weight:600;border:1px solid var(--bord);padding:2px 8px;border-radius:2px">${n.tag}</span>
+            <span class="ral" style="font-size:10px;color:var(--txt3)">${n.date}</span>
+          </div>
+          <h4 class="osw" style="font-size:15px;color:var(--txt);line-height:1.3">${n.title}</h4>
+          <div class="ral" style="margin-top:16px;font-size:12px;color:var(--b);font-weight:500">→</div>
+        </div>
+      </div>`).join('')}
+    </div>
+  </section>
+
+  <!-- MERCH (тільки на першій сторінці) -->
+  <div class="merch-strip">
+    <div class="merch-inner">${MERCH.concat(MERCH).map(m=>`<div style="display:flex;align-items:center;gap:12px;flex-shrink:0"><span class="osw" style="font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.2em">MERCH</span><span class="ral" style="font-size:12px;color:rgba(255,255,255,.6)">${m}</span><span style="color:rgba(255,255,255,.15)">·</span></div>`).join('')}</div>
+  </div>
+
+  ${t()?`<section style="padding:48px;background:var(--bg)" class="wrap"><div class="sec-head"><h2 class="osw sec-title">INSTAGRAM</h2><span class="ral" style="font-size:12px;color:var(--b);font-weight:500">@enko_music</span></div><div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px">${[1,2,3,4,5,6].map(i=>`<div style="aspect-ratio:1;background:${i%2?'var(--bg2)':'var(--bg3)'};border-radius:2px;display:flex;align-items:center;justify-content:center"><span class="ral" style="font-size:9px;color:var(--txt3)">Post ${i}</span></div>`).join('')}</div></section>`:''}
+
+  <!-- CTA -->
+  <section style="padding:80px 48px;background:var(--bg);text-align:center" class="wrap">
+    <h2 class="osw" style="font-size:36px;color:var(--txt);margin-bottom:12px">${t()?"ГОТОВІ РОСТИ ГЛОБАЛЬНО?":"READY TO GO GLOBAL?"}</h2>
+    <p class="ral" style="font-size:15px;color:var(--txt2);margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto">${t()?"Давайте побудуємо щось разом.":"Let's build something together."}</p>
+    <button class="btn-blue" onclick="go('contact')">GET IN TOUCH</button>
+  </section>`;
+}
+
+// ════════════════════════════════════
+// PAGE: PUBLISHING
+// ════════════════════════════════════
+function pagePublishing(){
+  const p=PRODUCER_HEAD;
+  return `<div class="wrap">
+  <!-- Hero -->
+  <section style="position:relative;min-height:340px;background:var(--blk);display:flex;align-items:center;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(0,21,206,.4) 0%,transparent 60%)"></div>
+    <div style="position:relative;z-index:2;padding:48px"><p class="page-label" style="color:var(--m)">${t()?"Паблішинг":"Publishing"}</p><h1 class="osw" style="font-size:64px;color:#fff;letter-spacing:.04em">PUBLISHING</h1><p class="ral" style="font-size:14px;color:rgba(255,255,255,.5);max-width:480px;margin-top:14px;line-height:1.7">${t()?"Ми пишемо хіти. Команда продюсерів та сонграйтерів під керівництвом Вані.":"We write hits. A team of producers and songwriters led by Vanko."}</p></div>
+  </section>
+
+  <!-- PRODUCER HEAD (only Vanko) -->
+  <section style="padding:0">
+    <div style="padding:48px 48px 24px"><div class="sec-head"><h2 class="osw sec-title">${t()?"КЕРІВНИК ПАБЛІШИНГУ":"HEAD OF PUBLISHING"}</h2><span class="ral" style="font-size:11px;color:var(--txt3)">${t()?"Команда — за лаштунками":"Team — behind the scenes"}</span></div></div>
+    <div class="prod-slide">
+      <div class="prod-img" style="min-height:420px;background:var(--blk)">
+        <div style="text-align:center"><span style="font-size:120px;opacity:.18;color:#fff">${p.img}</span><p class="ral" style="position:absolute;bottom:16px;left:16px;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase">${t()?"Фото — Ваньок":"Photo — Vanko"}</p></div>
+      </div>
+      <div class="prod-info" style="padding:60px 48px">
+        <p class="mono" style="font-size:10px;color:var(--b);letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px">${L(p.role)}</p>
+        <h3 class="osw" style="font-size:48px;color:var(--txt);margin-bottom:8px;letter-spacing:.04em">${p.name}</h3>
+        <p class="ral" style="font-size:13px;color:var(--txt3);margin-bottom:18px">${p.genre} · ${L(p.location)}</p>
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:24px"><p class="osw" style="font-size:28px;color:var(--b)">${p.streams}</p><span class="mono" style="font-size:10px;color:var(--txt3);letter-spacing:.1em;text-transform:uppercase">${t()?"стрімів":"streams"}</span></div>
+        <p class="ral" style="font-size:14px;color:var(--txt2);line-height:1.7;max-width:440px;margin-bottom:24px">${L(p.bio)}</p>
+        <p class="ral" style="font-size:12px;color:var(--txt3);font-style:italic;max-width:440px">${t()?"Більше про команду продюсерів — за запитом.":"More about the wider production team — available on request."}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDIOS (secondary mention only) -->
+  <section style="padding:48px;background:var(--bg2)">
+    <div class="sec-head"><h2 class="osw sec-title">${t()?"СТУДІЇ":"STUDIOS"}</h2><span class="ral" style="font-size:11px;color:var(--txt3)">${t()?"Інфраструктура — другорядне":"Infrastructure — secondary"}</span></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bord)">
+      ${[
+        {loc:{en:"Carpathians, UA",ua:"Карпати, UA"},type:{en:"Creative Retreat",ua:"Креативна резиденція"}},
+        {loc:{en:"Gdansk, PL",ua:"Гданськ, PL"},type:{en:"Production",ua:"Продакшн"}},
+        {loc:{en:"Kyiv, UA",ua:"Київ, UA"},type:{en:"ENKO Hub",ua:"ENKO Hub"}}
+      ].map(s=>`<div style="padding:24px;background:var(--bg)">
+        <h4 class="osw" style="font-size:14px;color:var(--txt);margin-bottom:4px">${L(s.type)}</h4>
+        <p class="mono" style="font-size:10px;color:var(--txt3);letter-spacing:.1em;text-transform:uppercase">${L(s.loc)}</p>
+      </div>`).join('')}
+    </div>
+  </section>
+
+  <!-- HITS / TRACKS carousel -->
+  <section style="padding:0 48px 64px">
+    <div class="sec-head"><h2 class="osw sec-title">${t()?"ХІТИ НАШОГО ПАБЛІШИНГУ":"OUR PUBLISHING HITS"}</h2></div>
+    <div style="display:flex;overflow-x:auto;padding-bottom:16px;gap:16px;scrollbar-width:none">
+      ${TRACKS.map(tr=>`<div class="track-item"><div class="track-cover" style="background:${tr.color}"><span style="font-size:40px;opacity:.3">♪</span><div style="position:absolute;top:8px;right:8px"><span class="osw" style="font-size:10px;color:rgba(255,255,255,.6);background:rgba(0,0,0,.5);padding:2px 8px;border-radius:2px">${tr.streams}</span></div></div><p class="ral" style="font-size:12px;color:var(--txt);font-weight:500;margin-top:8px">${tr.title}</p><p class="ral" style="font-size:11px;color:var(--txt3)">${tr.artist}</p></div>`).join('')}
+    </div>
+    <p class="ral" style="font-size:10px;color:var(--txt3);text-align:center;margin-top:8px">← ${t()?"прогортай":"scroll"} →</p>
+  </section>
+  </div>
+
+  <!-- CTA -->
+  <section style="padding:80px 48px;background:var(--txt);text-align:center">
+    <h2 class="osw" style="font-size:36px;color:#fff;margin-bottom:12px">${t()?"ХОЧЕШ ХІТ?":"WANT A HIT?"}</h2>
+    <p class="ral" style="font-size:15px;color:rgba(255,255,255,.4);margin-bottom:28px;max-width:440px;margin-left:auto;margin-right:auto">${t()?"Давай створимо щось разом.":"Let's create something together."}</p>
+    <button class="btn-blue" onclick="go('contact')" style="background:#fff;color:var(--txt)">GET IN TOUCH</button>
+  </section>`;
+}
+
+// MARKETING handled externally by LIRA — no internal page. Nav button opens LIRA_URL.
+
+// ════════════════════════════════════
+// PAGE: FOR BUSINESS
+// ════════════════════════════════════
+function pageForBusiness(){
+  const INVEST=[
+    {title:{en:"Invest in ENKO Label",ua:"Інвестиції в ENKO як компанію"},desc:{en:"Take a stake in ENKO as a company. Co-own the infrastructure that's already moved 16B+ streams worldwide.",ua:"Стати співвласником ENKO як компанії. Інфраструктура, що вже згенерувала 16B+ стрімів."},tag:{en:"Equity",ua:"Капітал"},metric:"16B+"},
+    {title:{en:"Invest in ENKO Studio",ua:"Інвестиції в студію як компанію"},desc:{en:"Stake in our studio business — Carpathians, Gdansk, Kyiv hub. Physical infrastructure with recurring revenue.",ua:"Інвестиції в студійний бізнес — Карпати, Гданськ, Київ. Фізична інфраструктура з регулярним доходом."},tag:{en:"Studio",ua:"Студія"},metric:"3"},
+    {title:{en:"Invest in Artists",ua:"Інвестиції в артистів"},desc:{en:"Back specific artists from the ENKO roster. Returns tied to streaming, touring, sync revenue. Ask us for project specifics.",ua:"Інвестувати в окремих артистів ENKO. Дохід — від стрімінгу, турів, синхронізації. Конкретику — за запитом."},tag:{en:"Artist Deals",ua:"Артист-діли"},metric:"134"}
+  ];
+  const COLLAB=[
+    {title:{en:"Brand Deals",ua:"Бренд-діли"},desc:{en:"Connect your brand with 134 globally distributed artists. Custom campaigns, event partnerships, endorsements.",ua:"Зʼєднайте бренд з 134 артистами. Кастомні кампанії, івент-партнерства."},tag:{en:"Commercial",ua:"Комерція"}},
+    {title:{en:"Sync & Licensing",ua:"Синхронізація та ліцензування"},desc:{en:"Music for film, TV, advertising, gaming. Netflix, major brands, global reach.",ua:"Музика для кіно, ТВ, реклами, ігор. Netflix, великі бренди, глобальне охоплення."},tag:{en:"Sync",ua:"Синхронізація"}},
+    {title:{en:"Sub-Label Partnerships",ua:"Партнерства саблейблів"},desc:{en:"Launch or scale your label under ENKO's infrastructure. Distribution, marketing, legal — full stack while you focus on A&R.",ua:"Запустіть лейбл на інфраструктурі ENKO. Дистрибуція, маркетинг, юридична підтримка."},tag:{en:"Partnership",ua:"Партнерство"}},
+    {title:{en:"Catalog Acquisition",ua:"Викуп каталогів"},desc:{en:"We acquire and manage music catalogs globally. Proven track record of growing catalog value.",ua:"Купуємо та управляємо каталогами. Доведений досвід зростання вартості."},tag:{en:"Catalog",ua:"Каталоги"}}
+  ];
+  const TESTIMONIALS=[
+    {quote:{en:"Working with ENKO opened global pipelines we couldn't reach alone. The infrastructure is real.",ua:"Співпраця з ENKO відкрила глобальні канали, недоступні самотужки. Інфраструктура реальна."},author:"Partner Quote",role:{en:"Sub-label CEO",ua:"CEO саблейблу"}},
+    {quote:{en:"From signing to platinum in under 18 months. The team executes.",ua:"Від підпису контракту до платини менш ніж за 18 місяців. Команда виконує."},author:"Artist Quote",role:{en:"ENKO Roster Artist",ua:"Артист ENKO"}}
+  ];
+
+  return `<div class="wrap">
+  <section style="padding:64px 48px;background:var(--blk);color:#fff;border-bottom:1px solid var(--bord)">
+    <p class="page-label" style="color:var(--m)">${t()?"Інвестиції та партнерства":"Investment & Partnerships"}</p>
+    <h1 class="osw" style="font-size:64px;color:#fff;margin-bottom:16px;letter-spacing:.04em">FOR BUSINESS</h1>
+    <p class="ral" style="font-size:16px;color:rgba(255,255,255,.55);max-width:600px;line-height:1.7">${t()?"Хочеш заробляти разом з ENKO? Інвестуй у компанію, студію або в артистів. Або працюй з нами на синхронізації, каталогах, саблейблах.":"Want to earn alongside ENKO? Invest in the company, the studio, or in artists directly. Or partner with us on sync, catalogs, sub-labels."}</p>
+  </section>
+
+  <!-- INVESTMENTS BLOCK -->
+  <section style="padding:48px">
+    <div class="sec-head"><h2 class="osw sec-title">${t()?"ІНВЕСТИЦІЇ":"INVEST"}</h2><span class="ral" style="font-size:11px;color:var(--txt3)">${t()?"3 напрямки":"3 directions"}</span></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      ${INVEST.map(o=>`<div class="case-card" style="background:var(--blk);color:#fff;border-color:var(--blk)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px">
+          <span class="mono" style="font-size:10px;color:var(--m);letter-spacing:.18em">${L(o.tag)}</span>
+          <span class="osw" style="font-size:28px;color:var(--m)">${o.metric}</span>
+        </div>
+        <h3 class="osw" style="font-size:22px;color:#fff;margin-bottom:14px;letter-spacing:.02em">${L(o.title)}</h3>
+        <p class="ral" style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:24px">${L(o.desc)}</p>
+        <button class="btn-blue" onclick="event.stopPropagation();go('contact')" style="font-size:10px;padding:10px 24px;background:var(--m);color:var(--blk)">${t()?"ОБГОВОРИТИ":"DISCUSS"}</button>
+      </div>`).join('')}
+    </div>
+  </section>
+
+  <!-- COLLABORATION BLOCK -->
+  <section style="padding:0 48px 48px">
+    <div class="sec-head"><h2 class="osw sec-title">${t()?"СПІВПРАЦЯ":"COLLABORATION"}</h2><span class="ral" style="font-size:11px;color:var(--txt3)">${t()?"Без частки в компанії":"Non-equity partnerships"}</span></div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+      ${COLLAB.map(o=>`<div class="case-card"><span class="ral" style="font-size:10px;color:var(--b);letter-spacing:.12em;text-transform:uppercase;font-weight:600;display:block;margin-bottom:16px">${L(o.tag)}</span><h3 class="osw" style="font-size:20px;color:var(--txt);margin-bottom:12px">${L(o.title)}</h3><p class="ral" style="font-size:13px;color:var(--txt2);line-height:1.7;margin-bottom:20px">${L(o.desc)}</p><button class="btn-blue" onclick="event.stopPropagation();go('contact')" style="font-size:10px;padding:10px 24px">GET IN TOUCH</button></div>`).join('')}
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section style="padding:64px 48px;background:var(--bg2)">
+    <div class="sec-head"><h2 class="osw sec-title">${t()?"ВІДГУКИ":"TESTIMONIALS"}</h2><span class="ral" style="font-size:11px;color:var(--txt3)">${t()?"Партнери та артисти":"Partners & artists"}</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      ${TESTIMONIALS.map(tx=>`<div style="padding:40px 36px;background:#fff;border:1px solid var(--bord);position:relative">
+        <div class="osw" style="font-size:60px;color:var(--m);line-height:.5;margin-bottom:8px">"</div>
+        <p class="ral" style="font-size:16px;color:var(--txt);line-height:1.7;margin-bottom:20px;font-style:italic">${L(tx.quote)}</p>
+        <div style="border-top:1px solid var(--bord);padding-top:14px">
+          <p class="osw" style="font-size:13px;color:var(--txt);letter-spacing:.05em">${tx.author}</p>
+          <p class="mono" style="font-size:10px;color:var(--txt3);letter-spacing:.1em;margin-top:2px">${L(tx.role)}</p>
+        </div>
+      </div>`).join('')}
+    </div>
+  </section>
+  </div>
+  <section style="padding:80px 48px;background:#fff;text-align:center" class="wrap">
+    <h2 class="osw" style="font-size:36px;color:var(--txt);margin-bottom:28px">${t()?"ЗАРОБЛЯЙ З НАМИ":"EARN WITH US"}</h2>
+    <button class="btn-blue" onclick="go('contact')">GET IN TOUCH</button>
+  </section>`;
+}
+
+// ════════════════════════════════════
+// PAGE: CONTACT
+// ════════════════════════════════════
+function pageContact(){
+  const faqs=t()?FAQ_UA:FAQ_EN;
+  const formHTML=formSent?`<div style="padding:60px 0;text-align:center"><div class="osw" style="font-size:48px;color:var(--b)">✓</div><p class="osw" style="font-size:16px;color:var(--txt);margin-top:16px">${t()?"ДЯКУЄМО":"THANK YOU"}</p><p class="ral" style="font-size:13px;color:var(--txt2);margin-top:8px">${t()?"Ми звʼяжемось найближчим часом.":"We'll get back to you shortly."}</p></div>`:`${[{l:t()?"Імʼя":"Name",ph:t()?"Ваше імʼя":"Your name"},{l:"Email",ph:"your@email.com"},{l:t()?"Тема":"Subject",ph:t()?"Дистрибуція / Синхронізація / Бізнес / Інше":"Distribution / Sync / Business / Other"}].map(f=>`<div style="margin-bottom:20px"><label class="ral" style="font-size:10px;color:var(--txt3);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:6px">${f.l}</label><input placeholder="${f.ph}"></div>`).join('')}<div style="margin-bottom:24px"><label class="ral" style="font-size:10px;color:var(--txt3);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:6px">${t()?"Повідомлення":"Message"}</label><textarea rows="4" placeholder="${t()?"Розкажіть про ваш проєкт...":"Tell us about your project..."}"></textarea></div><button class="btn-blue" onclick="sendForm()" style="width:100%;padding:16px">${t()?"НАДІСЛАТИ":"SEND"}</button>`;
+
+  return `<div class="wrap">
+  <section style="padding:48px;border-bottom:1px solid var(--bord)">
+    <p class="page-label">${t()?"Звʼязок":"Reach Out"}</p>
+    <h1 class="osw" style="font-size:48px;color:var(--txt);margin-bottom:16px">${t()?"КОНТАКТИ":"GET IN TOUCH"}</h1>
+  </section>
+  <!-- FAQ first -->
+  <section style="padding:32px 48px 48px">
+    <h2 class="osw" style="font-size:12px;color:var(--txt3);letter-spacing:.2em;padding:12px 0;border-bottom:1px solid var(--bord)">FAQ</h2>
+    ${faqs.map((f,i)=>`<div class="faq-row ${expandedFaq===i?'open':''}" onclick="toggleFaq(${i})"><div style="display:flex;justify-content:space-between;align-items:center"><span class="ral" style="font-size:15px;color:var(--txt);font-weight:500">${f.q}</span><span class="osw faq-plus">+</span></div><div class="faq-expand"><p class="ral" style="font-size:14px;color:var(--txt2);line-height:1.7;padding-top:12px;max-width:600px">${f.a}</p></div></div>`).join('')}
+  </section>
+  <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--bord)">
+    <section style="padding:32px 48px 48px;border-right:1px solid var(--bord)">
+      <h2 class="osw" style="font-size:12px;color:var(--txt3);letter-spacing:.2em;padding:12px 0;border-bottom:1px solid var(--bord)">${t()?"ДЕПАРТАМЕНТИ":"DEPARTMENTS"}</h2>
+      ${DEPTS.map(d=>`<div style="padding:16px 0;border-bottom:1px solid var(--bord);cursor:pointer;transition:all .2s" onmouseenter="this.style.paddingLeft='8px'" onmouseleave="this.style.paddingLeft='0'"><div style="display:flex;justify-content:space-between;align-items:center"><span class="ral" style="font-size:14px;color:var(--txt);font-weight:500">${L(d.l)}</span><span class="mono" style="font-size:11px;color:var(--b)">${d.e}</span></div><p class="ral" style="font-size:11px;color:var(--txt3);margin:4px 0 0">${L(d.d)}</p></div>`).join('')}
+      <div style="margin-top:28px"><h3 class="osw" style="font-size:11px;color:var(--txt3);letter-spacing:.15em;margin-bottom:12px">${t()?"СОЦМЕРЕЖІ":"SOCIAL"}</h3><div style="display:flex;gap:6px;flex-wrap:wrap">${["Instagram","YouTube","TikTok","Spotify","LinkedIn"].map(s=>`<span class="pill">${s}</span>`).join('')}</div></div>
+    </section>
+    <section style="padding:32px 48px 48px">
+      <h2 class="osw" style="font-size:12px;color:var(--txt3);letter-spacing:.2em;padding:12px 0;border-bottom:1px solid var(--bord);margin-bottom:24px">${t()?"НАПИСАТИ":"SEND MESSAGE"}</h2>
+      ${formHTML}
+    </section>
+  </div></div>`;
+}
+
+function render(){
+  renderNav();
+  const app=document.getElementById('app');
+  switch(page){
+    case 'enko':app.innerHTML=pageEnko();break;
+    case 'publishing':app.innerHTML=pagePublishing();break;
+    case 'forbusiness':app.innerHTML=pageForBusiness();break;
+    case 'contact':app.innerHTML=pageContact();break;
+    default:app.innerHTML=pageEnko();
+  }
+  renderFooter();
+}
+render();
+</script>
+</body>
+</html>
